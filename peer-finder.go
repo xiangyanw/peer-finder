@@ -138,7 +138,10 @@ func main() {
 			log.Printf("%v", err)
 			continue
 		}
-		if newPeers.Equal(peers) || !newPeers.Has(myName) {
+		if newPeers.Equal(peers) {
+			continue
+		}
+		if !newPeers.Has(myName) {
 			log.Printf("Have not found myself in list yet.\nMy Hostname: %s\nHosts in list: %s", myName, strings.Join(newPeers.List(), ", "))
 			continue
 		}
